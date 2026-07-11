@@ -140,3 +140,6 @@ src/.vscode/
 
 #Formater
 .clang-format
+
+#Execute
+algo
