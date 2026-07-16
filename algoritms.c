@@ -6,7 +6,7 @@
  * @param arr Pointer sorted array of int.
  * @param len Arrays length.
  * @param value Target value.
- * @returns If value found index of value in arr, else -1.
+ * @returns Index of first found value in arr. If not found -1.
  * @author Basil1k
  */
 int binary_search(int* arr, int len, int value) {
@@ -36,9 +36,10 @@ int binary_search(int* arr, int len, int value) {
  * @param arr Pointer on search array of int.
  * @param len Arrays length.
  * @param mode 0 - increase, 1 - decrease.
+ * @returns 0 on success, -1 on error.
  * @author Basil1k
  */
-void bubble_sort(int* arr, int len, int mode) {
+int bubble_sort(int* arr, int len, int mode) {
   int temp;
 
   for (int i = 0; i < len; i++) {
@@ -58,4 +59,38 @@ void bubble_sort(int* arr, int len, int mode) {
       }
     }
   }
+
+  return 0;
+}
+
+/**
+ * Function quick sort array of integers.
+ * O(nlogn)
+ * @param arr Pointer on search array of int.
+ * @param low Lower boundary of the array.
+ * @param high Higher boundary of the array.
+ * @param mode 0 - increase, 1 - decrease.
+ * @returns 0 on success, -1 on error.
+ * @author Basil1k
+ */
+int quick_sort(int* arr, int low, int high, int mode) {
+  int len = high - low;
+  int index = low + (rand() % len);
+  int pivot = arr[index];
+  int temp;
+  while (low < high) {
+    while (arr[low] < pivot) {
+      low++;
+    }
+
+    while (arr[high] < pivot) {
+      high--;
+    }
+
+    temp = arr[high];
+    arr[high] = arr[low];
+    arr[low] = temp;
+  }
+
+  return 0;
 }
