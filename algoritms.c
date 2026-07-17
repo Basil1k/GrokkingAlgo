@@ -74,23 +74,33 @@ int bubble_sort(int* arr, int len, int mode) {
  * @author Basil1k
  */
 int quick_sort(int* arr, int low, int high, int mode) {
-  int len = high - low;
-  int index = low + (rand() % len);
-  int pivot = arr[index];
+  if (low >= high) return 0;
+
+  int pivot = arr[low + rand() % (high - low + 1)];
+  int left = low;
+  int right = high;
   int temp;
-  while (low < high) {
-    while (arr[low] < pivot) {
-      low++;
+
+  while (left < right) {
+    if (mode) {
+      while (arr[left] > pivot) left++;
+      while (arr[right] < pivot) right--;
+    } else {
+      while (arr[left] < pivot) left++;
+      while (arr[right] > pivot) right--;
     }
 
-    while (arr[high] < pivot) {
-      high--;
+    if (left <= right) {
+      temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left++;
+      right--;
     }
-
-    temp = arr[high];
-    arr[high] = arr[low];
-    arr[low] = temp;
   }
+
+  quick_sort(arr, low, right, mode);
+  quick_sort(arr, left, high, mode);
 
   return 0;
 }

@@ -6,8 +6,15 @@ int main(int argc, char** argv) {
   srand(time(NULL));
 
   printf("========GROKKING ALGORITMS========\n");
-  test_bubble_sort();
-  test_binay_search();
+  // test_bubble_sort();
+  // test_binay_search();
+  test_quick_sort();
+
+  for (int i = 0; i < 1000; i++) {
+    printf("Number № %d\n", i + 1);
+    test_quick_sort();
+  }
+
   return 0;
 }
 
@@ -15,14 +22,34 @@ void test_bubble_sort() {
   int len = 10;
   int* arr = get_random_arr(len, 0, 100);
 
-  printf("Bubble sort\nBefore: ");
+  printf("\nBubble sort\nBefore:\t");
   print_arr(arr, len);
 
   bubble_sort(arr, len, 0);
-
-  printf("After:  ");
+  printf("After0:\t");
   print_arr(arr, len);
-  printf("\n");
+
+  bubble_sort(arr, len, 1);
+  printf("After1:\t");
+  print_arr(arr, len);
+
+  free(arr);
+}
+
+void test_quick_sort() {
+  int len = 10;
+  int* arr = get_random_arr(len, 0, 100);
+
+  printf("\nQuick sort\nBefore:\t");
+  print_arr(arr, len);
+
+  quick_sort(arr, 0, len - 1, 0);
+  printf("After0:\t");
+  print_arr(arr, len);
+
+  quick_sort(arr, 0, len - 1, 1);
+  printf("After1:\t");
+  print_arr(arr, len);
   free(arr);
 }
 
@@ -31,7 +58,7 @@ void test_binay_search() {
   int* arr = get_random_arr(len, 0, 100);
   int target_index = rand() % len;
 
-  printf("Binary search\nArray: ");
+  printf("\nBinary search\nArray:\t");
   bubble_sort(arr, len, 0);
   print_arr(arr, 10);
 

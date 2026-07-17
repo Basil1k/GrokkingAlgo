@@ -6,5 +6,7 @@
 #include <time.h>
 
 int binary_search(int* arr, int len, int value);
-void bubble_sort(int* arr, int len, int mode);
+int bubble_sort(int* arr, int len, int mode);
+int quick_sort(int* arr, int low, int high, int mode);
+
 #endif

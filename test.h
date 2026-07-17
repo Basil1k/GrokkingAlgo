@@ -9,5 +9,6 @@
 
 void test_bubble_sort();
 void test_binay_search();
+void test_quick_sort();
 
 #endif
